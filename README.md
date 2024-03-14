@@ -1,2 +1,3 @@
 # Projeto-Individual-Piraju
-Meu primeiro projeto em html, css e js
+Meu primeiro projeto individual
+-conectado com o banco, exibindo dash e kpis
