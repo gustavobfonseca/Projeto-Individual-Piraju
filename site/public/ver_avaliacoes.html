@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<style>
+    * {
+        top: 0;
+    }
+</style>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>PiraTour | Estatísticas</title>
+
+    <script src="./js/sessao.js"></script>
+    <script src="js/scriptLogin.js"></script>
+    <script src="js/scripit_perfil.js"></script>
+    <script src="js/pontos_turisticos.js"></script>
+
+    <!-- mapa -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <!-- mapa -->
+
+    <link rel="icon" href="./assets/pirajulogo.PNG" />
+    <link rel="stylesheet" href="./css/style_header.css">
+    <link rel="stylesheet" href="./css/style_logado.css">
+    <link rel="stylesheet" href="./css/Style_entrar-cadastrar.css">
+    <link rel="stylesheet" href="./css/style_pontos_turisticos.css">
+    <link rel="stylesheet" href="./css/style_corpo.css">
+    <link rel="stylesheet" href="./css/style_rodape.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+
+    <link rel="stylesheet" href="./css/style.css" />
+
+    <!-- <link rel="preconnect" href="https://fonts.gstatic.com" /> -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet" />
+
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+</head>
+<!-- header -->
+<header>
+    <ul class="ul_header">
+
+        <li class="li_header_img"><a class="a_header" href="#"><img src="./assets/pirajulogo.PNG" width="130px"></a>
+        </li>
+
+        <li class="li_header2"><a class="a_header" href="Home_logado.html">SOBRE PIRAJU</a></li>
+
+        <li class="li_header2"><a class="a_header" href="PT_logado.html">PONTOS TURÍSTICOS</a></li>
+
+        <li class="li_header2"><a class="a_header" href="ver_avaliacoes.html">ESTATÍSTICAS</a></li>
+
+        <!-- <li class="li_header"><a class="a_header" href="#"> EXPERIÊNCIAS</a></li> -->
+
+        <li><a class="a_header" href="#">
+                <div><i id="user_header" onclick="menu_perfil()" class='bx bxs-user-circle'></i>
+            </a></li>
+
+    </ul>
+</header>
+<!-- header -->
+
+<!-- div perfil -->
+<div class="box_perfil_menu">
+    <div class="perfil_menu" id="div_perfil_menu">
+        <ul>
+            <!-- <li class="li_perfil_icone"><a class="a_icone_perfil" href="#">Meu perfil</a></li><br> -->
+            <li class="li_perfil_icone"><a class="a_icone_perfil" href="./index.html">Sair <i
+                        class='bx bx-log-out'></i></a>
+            </li>
+        </ul>
+    </div>
+</div>
+<!-- div perfil -->
+
+<!-- corpo  -->
+
+<body class="body">
+    <div class="corpo1">
+        <div class="container_corpo">
+            <div class="box_titulo">
+                <div class="corpo_titulo5">
+                    <div class="corpo_titulo5">Olá <B><span id="b_usuario"></B></span>,
+                    </div>
+                </div>
+            </div>
+            <div class="corpo_txt">
+                <div class="corpo_txt_center">
+                    <center>
+                        Aqui você poderá ver de maneira geral todos os dados e estatísticas do nosso site, juntamente a
+                        avaliação de todos os Pontos Turísticos !
+                    </center>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="corpo1">
+        <div class="corpo_txt">
+            <center>
+                <div class="chartfundo">
+                    <div class="corpo_titulo6">"Já visitou Piraju ?"</div>
+                    <div class="grafico">
+                        <canvas id="myPieChart" width="200" height="200"></canvas>
+                    </div>
+
+                    <!-- grafio -->
+                </div>
+            </center>
+        </div>
+    </div>
+    </div>
+
+    </div>
+    </div>
+
+    <div class="corpo1">
+        <div class="corpo_txt">
+            <center>
+                <div class="chartfundo">
+                    <div class="corpo_titulo6">Comentários</div>
+
+                    <div class="grafico">
+                        <canvas id="myBarAvaliacao" width="400" height="400"></canvas>
+                    </div>
+                    <!-- grafico -->
+                </div>
+
+        </div>
+        </center>
+    </div>
+    </div>
+    </div>
+</body>
+<!-- corpo -->
+
+<!--footer inicio-->
+<div class="rodape">
+
+    <div class="navegacao_img">
+        <p> <img src="./assets/pirajulogo.PNG" width="130px"></p>
+    </div>
+
+    <div class="navegacao">
+        <p class="titulo_navegacao">Navegação</p>
+        <a class="a_navegacao" href="Home_logado.html">SOBRE PIRAJU</a><br>
+        <a class="a_navegacao" href="PT_logado.html">PONTOS TURÍSTICOS</a><br>
+        <a class="a_navegacao" href="ver_avaliacoes.html">ESTATÍSTICAS</a><br>
+        <!-- <a class="a_navegacao" href="#">EXPERIÊNCIAS</a><br> -->
+        <!-- <a class="a_navegacao" href="#">ENTRAR</a><br> -->
+        <!-- <a class="a_navegacao" href="#">CADASTRE-SE</a><br> -->
+        <a class="a_navegacao" href="index.html">SAIR</a><br>
+    </div>
+
+
+    <div class="navegacao">
+        <p class="titulo_navegacao">Todos os direitos reservados</p>
+        <p>PiraTour,2023</p>
+    </div>
+
+    <div class="redes_sociais">
+
+        <ul class="ul_rodape">
+            <li class="li_rodape"> <a href="https://outlook.office.com/mail/"
+                    target="https://outlook.office.com/mail/"><i class='bx bx-envelope'></i></a>
+            <li class="li_rodape"><a href="https://www.instagram.com/gustavo__bueno__/"
+                    target="https://www.instagram.com/gustavo__bueno__/"><i class='bx bxl-instagram'
+                        id="instagram"></i></a>
+            <li class="li_rodape"><a href="https://github.com/buenofonsecag/prejetooo"
+                    target="https://github.com/buenofonsecag/prejetooo"><i class='bx bxl-github'></i></a>
+            <li class="li_rodape"><a href=" https://wa.me/5511933923464" target=" https://wa.me/5511933923464"><i
+                        class='bx bxl-whatsapp'></i></a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<!--footer fim-->
+<!-- grafico ja visitou Piraju -->
+<script>
+    var Sim = 0;
+    var Nao = 0;
+
+    var myPieChart; // Declare a variável fora das funções para que seja global
+
+    window.onload = function () {
+        obterDadosGrafico();
+        obterDadosGraficoDois();
+        setTimeout(() => {
+            criarGrafico(Sim, Nao);
+        }, 1000);
+        buscarRuim();
+        buscarOk();
+        buscarBom();
+        buscarMuitoBom();
+        buscarSuperaExpectativas();
+        setTimeout(() => {
+            criarGrafico2(Ruim, Ok, Bom, MuitoBom, SuperaExpectativas)
+        }, 1000);
+    };
+
+    function obterDadosGrafico() {
+        fetch("/medidas/tempo-real", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({}),
+        })
+            .then(function (resposta) {
+                if (resposta.ok) {
+                    resposta.json().then(json => {
+                        console.log(`Dados recebidos (Sim): ${JSON.stringify(json)}`);
+                         Sim = json[0].Sim;
+                        // Agora que temos o valor "Sim", vamos verificar se o gráfico já foi criado
+                        
+                    });
+                } else {
+                    console.error('Nenhum dado encontrado ou erro na API');
+                }
+            })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
+    }
+
+    function obterDadosGraficoDois() {
+        fetch("/medidas/tempo-realDois", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({}),
+        })
+            .then(function (resposta) {
+                console.log(resposta);
+                if (resposta.ok) {
+                    resposta.json().then(json => {
+                        console.log(`Dados recebidos (Não): ${JSON.stringify(json)}`);
+                         Nao = json[0].Nao;
+                        // Agora que temos o valor "Não", vamos verificar se o gráfico já foi criado
+                        atualizarGrafico(Sim, Nao)
+                    });
+                } else {
+                    console.error('Nenhum dado encontrado ou erro na API 2');
+                }
+            })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico 2: ${error.message}`);
+            });
+    }
+
+    function criarGrafico(dSim, dNao) {
+        const data = {
+            labels: ['Sim', 'Não'],
+            datasets: [{
+                data: [dSim, dNao],
+                backgroundColor: ['rgb(75, 192, 192)', 'rgb(255, 99, 132)'],
+            }],
+        };
+
+        let ctx = document.getElementById('myPieChart').getContext('2d');
+        myPieChart = new Chart(ctx, {
+            type: 'pie',
+            data: data,
+        });
+    }
+
+    function atualizarGrafico(dSim, dNao) {
+        myPieChart.data.datasets[0].data = [dSim, dNao];
+        myPieChart.update();
+    }
+
+
+
+
+
+// <!-- grafico ja visitou Piraju 
+
+// <!-- grafico avaliacoes
+
+    // Dados para o gráfico
+    var Ruim = 0
+    var Ok = 0
+    var Bom = 0
+    var MuitoBom = 0
+    var SuperaExpectativas = 0
+
+    var myBarAvaliacao; // Declare a variável fora das funções para que seja global
+
+    function buscarRuim() {
+        fetch("/medidas/Ruim", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({}),
+        })
+            .then(function (resposta) {
+                if (resposta.ok) {
+                    resposta.json().then(json => {
+                        console.log(`Dados recebidos (Ok): ${JSON.stringify(json)}`);
+                        ruim = json[0].Ruim;
+                        console.log(ruim)
+                        // Agora que temos o valor "Ok", vamos verificar se o gráfico já foi criado
+                        // if (!myBarAvaliacao) {
+                        //     // Cria o gráfico apenas se ainda não existir
+                        //     criarGrafico2(Ruim, 0, 0, 0, 0);
+                        // } else {
+                        //     // Atualiza o gráfico com o valor de "Ruim"
+                        //     atualizarGrafico2(Ruim, 0, 0, 0, 0);
+                        // }
+                    });
+                } else {
+                    console.error('Nenhum dado encontrado ou erro na API ok');
+                }
+            })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
+    }
+
+
+    function buscarOk() {
+        fetch("/medidas/Ok", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({}),
+        })
+            .then(function (resposta) {
+                if (resposta.ok) {
+                    resposta.json().then(json => {
+                        console.log(`Dados recebidos (Ok): ${JSON.stringify(json)}`);
+                        Ok = json[0].Ok;
+                        // Agora que temos o valor "Ok", vamos verificar se o gráfico já foi criado
+                        // if (!myBarAvaliacao) {
+                        //     // Cria o gráfico apenas se ainda não existir
+                        //     criarGrafico2(0, Ok, 0, 0, 0);
+                        // } else {
+                        //     // Atualiza o gráfico com o valor de "Ok"
+                        //     atualizarGrafico2(0, Ok, 0, 0, 0);
+                        // }
+                    });
+                } else {
+                    console.error('Nenhum dado encontrado ou erro na API ok');
+                }
+            })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
+    }
+
+    function buscarBom() {
+        fetch("/medidas/Bom", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({}),
+        })
+            .then(function (resposta) {
+                if (resposta.ok) {
+                    resposta.json().then(json => {
+                        console.log(`Dados recebidos (Bom): ${JSON.stringify(json)}`);
+                        Bom = json[0].Bom;
+                        // Agora que temos o valor "Bom", vamos verificar se o gráfico já foi criado
+                        // if (!myBarAvaliacao) {
+                        //     // Cria o gráfico apenas se ainda não existir
+                        //     criarGrafico2(0, 0, Bom, 0, 0);
+                        // } else {
+                        //     // Atualiza o gráfico com o valor de "Bom"
+                        //     atualizarGrafico2(0, 0, Bom, 0, 0);
+                        // }
+                    });
+                } else {
+                    console.error('Nenhum dado encontrado ou erro na API Bom');
+                }
+            })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
+    }
+    function buscarMuitoBom() {
+        fetch("/medidas/MuitoBom", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({}),
+        })
+            .then(function (resposta) {
+                if (resposta.ok) {
+                    resposta.json().then(json => {
+                        console.log(`Dados recebidos (MuitoBom): ${JSON.stringify(json)}`);
+                        MuitoBom = json[0].MuitoBom;
+                        // Agora que temos o valor "MuitoBom", vamos verificar se o gráfico já foi criado
+                        // if (!myBarAvaliacao) {
+                        //     // Cria o gráfico apenas se ainda não existir
+                        //     criarGrafico2(0, 0, 0,MuitoBom, 0);
+                        // } else {
+                        //     // Atualiza o gráfico com o valor de "MuitoBom"
+                        //     atualizarGrafico2(0, 0, 0,MuitoBom, 0);
+                        // }
+                    });
+                } else {
+                    console.error('Nenhum dado encontrado ou erro na API MuitoBom');
+                }
+            })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
+    }
+    function buscarSuperaExpectativas() {
+        fetch("/medidas/SuperaExpectativas", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({}),
+        })
+            .then(function (resposta) {
+                if (resposta.ok) {
+                    resposta.json().then(json => {
+                        console.log(`Dados recebidos (SuperaExpectativas): ${JSON.stringify(json)}`);
+                        SuperaExpectativas = json[0].SuperaExpectativas;
+                        // Agora que temos o valor "SuperaExpectativas", vamos verificar se o gráfico já foi criado
+                        // if (!myBarAvaliacao) {
+                        //     // Cria o gráfico apenas se ainda não existir
+                        //     criarGrafico2(0, 0, 0,0,SuperaExpectativas);
+                        // } else {
+                        //     // Atualiza o gráfico com o valor de "SuperaExpectativas"
+                        //     atualizarGrafico2(0, 0, 0,0,SuperaExpectativas);
+                        // }
+                        atualizarGrafico2(Ruim, Ok, Bom, MuitoBom, SuperaExpectativas)
+                    });
+                } else {
+                    console.error('Nenhum dado encontrado ou erro na API SuperaExpectativas');
+                }
+            })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
+    }
+
+    function criarGrafico2(dRuim,dOk,dBom,dMuitoBom,dSupera) {
+        const data = {
+            labels: ['Ruim', 'Ok', 'Bom', 'Muito Bom', 'Superou as Expectativas'],
+            datasets: [{
+                label:['Gráfico'] ,
+                data: [dRuim, dOk ,dBom,dMuitoBom,dSupera],
+                backgroundColor:["gray","red","orange","yellow","green","blue"]
+            }],
+        };
+
+        let ctx = document.getElementById('myBarAvaliacao').getContext('2d');
+        myBarAvaliacao = new Chart(ctx, {
+            type: 'bar',
+            data: data,
+            
+        });
+    }
+
+    function atualizarGrafico2(dRuim, dOk, dBom, dMuitoBom, dSuperaExpectativas) {
+        myBarAvaliacao.data.datasets[0].data = [dRuim, dOk, dBom, dMuitoBom, dSuperaExpectativas];
+        myBarAvaliacao.update();
+    }
+
+</script>
+<!-- grafico avaliacoes -->

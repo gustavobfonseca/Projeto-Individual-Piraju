@@ -1,0 +1,201 @@
+
+.body{
+    background-color: #ccf0ff;
+    /* background-color: #b5c6db; */
+    /* color: #b5c6db; */
+    color:  #000000;
+
+
+}
+
+.container_corpo {
+    width: 100%;
+    height: 100%;
+    margin-top: 100px;
+}
+.container_corpo2{
+    width: 100%;
+    height: 300px;
+    box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+        background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed; /* Opcional: mantém a imagem fixa enquanto a página rola */
+    margin: 0; /* Remove margens padrão do corpo */
+    padding: 0;
+    background-image: url("../assets/imgs/eupiraju.jpg");
+    margin-bottom: -70px;
+}
+.corpo1 {
+    width: auto;
+    /* height: 700px; */
+    height: auto;
+    /* background-color: #b8d8ff; */
+    /* background-color: #b5c6db; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.corpo2 {
+    width: auto;
+    height: auto;
+    /* background-color: #d4e7ff; */
+
+    /* background-color: #b5c6db; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.box_titulo {
+    margin: 20px;
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+}
+
+
+
+.corpo_titulo1 {
+    margin-top: 130px;
+    /* margin-bottom: -40px; */
+    font-size: 40px;
+    margin-left: 80px;
+    margin-right: 80px;
+    color: black;
+}
+.corpo_titulo5 {
+    margin-top: 130px;
+    /* margin-bottom: -40px; */
+    font-size: 50px;
+    color:  #161f27;
+    /* text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); */
+    /* text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); */
+    margin-left: 80px;
+    margin-right: 80px;
+    /* color: black; */
+}
+.corpo_titulo6 {
+    font-size: 50px;
+    color:  #161f27;
+    margin-left: 80px;
+    margin-right: 80px;
+}
+.corpo_txt {
+    font-size: 25px;
+    color: black;
+    display: flex;
+    margin-left: 40px;
+    margin-right: 20px;
+    /* margin-top: 70px; */
+    /* display: flex; */
+    align-items: center;
+    padding: 20px;
+    /* justify-content: end; */
+    /* margin-top: 50px; */
+}
+
+.corpo_txt_center {
+    font-size: 28px;
+    color:  #161f27;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); */
+
+    margin-left: 40px;
+    margin-right: 20px;
+    margin-bottom: 210px;
+}
+
+
+.box_mapa {
+    height: 100%;
+    width: 100%;
+}
+
+#map {
+    z-index: 1;
+    height: 300px;
+    width: 70%;
+    margin-left: 50px;
+    position: static;
+    /* top: 50%; */
+    /* left: 50%; */
+    /* right: 50%; */
+    border-radius: 7px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.custom-alert {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    border: 2px solid #000000;
+    background-color: #fff;
+    border-radius: 7px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    z-index: 1000;
+}
+
+.custom-alert img {
+    width: 100%;
+    max-width: 200px; /* Ajuste conforme necessário */
+    height: auto;
+    margin-bottom: 10px;
+}
+.card_erro {
+    display: none;
+    background-color: #fff;
+    color: black;
+    height:auto;
+    position: fixed;
+    border-radius: 7px;
+    border: red 3px solid;
+    padding: 10px;
+    margin-top: 3%;
+    left: 75%;
+    z-index: 999;
+  }
+
+  #mensagem_erro{
+    /* padding: 20px; */
+    /* font-weight: 500; */
+    color: red;
+    font-size: larger;
+    /* font-size: 20px; */
+  }
+  .corpo_txt_verde{
+    font-size: 25px;
+    display: flex;
+    margin-left: 40px;
+    margin-right: 20px;
+    align-items: center;
+    padding: 20px;
+    color: green;
+  }
+  .corpo_txt_azul{
+  font-size: 25px;
+    color:orangered;
+    display: flex;
+    margin-left: 40px;
+    margin-right: 20px;
+    align-items: center;
+    padding: 20px;
+    
+  }
+  .corpo_txt_azul2{
+  font-size: 25px;
+    color: rgb(52, 52, 255);
+    display: flex;
+    margin-left: 40px;
+    margin-right: 20px;
+    align-items: center;
+    padding: 20px;
+    
+  }

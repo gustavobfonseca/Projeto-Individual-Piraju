@@ -1,0 +1,973 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>PiraTour | Pontos Turísticos</title>
+
+    <script src="./js/sessao.js"></script>
+    <script src="js/scriptLogin.js"></script>
+    <script src="js/scripit_perfil.js"></script>
+    <script src="js/pontos_turisticos.js"></script>
+
+    <!-- mapa -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <!-- mapa -->
+
+    <link rel="stylesheet" href="./css/style_header.css">
+    <link rel="stylesheet" href="./css/style_logado.css">
+    <link rel="stylesheet" href="./css/Style_entrar-cadastrar.css">
+    <link rel="stylesheet" href="./css/style_pontos_turisticos.css">
+    <link rel="stylesheet" href="./css/style_corpo.css">
+    <link rel="stylesheet" href="./css/style_rodape.css">
+
+    <!-- <link rel="preconnect" href="https://fonts.googleapis.com"> -->
+
+
+    <link rel="icon" href="./assets/pirajulogo.PNG" />
+
+    <link rel="stylesheet" href="./css/style.css" />
+
+    <!-- <link rel="preconnect" href="https://fonts.gstatic.com" /> -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet" />
+
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+</head>
+<!-- header -->
+<header>
+    <ul class="ul_header">
+
+        <li class="li_header_img"><a class="a_header" href="#"><img src="./assets/pirajulogo.PNG" width="130px"></a>
+        </li>
+
+        <li class="li_header2"><a class="a_header" href="Home_logado.html">SOBRE PIRAJU</a></li>
+
+        <li class="li_header2"><a class="a_header" href="PT_logado.html">PONTOS TURÍSTICOS</a></li>
+
+        <li class="li_header2"><a class="a_header" href="ver_avaliacoes.html">ESTATÍSTICAS</a></li>
+
+        <!-- <li class="li_header"><a class="a_header" href="#"> EXPERIÊNCIAS</a></li> -->
+
+        <li><a class="a_header" href="#">
+                <div><i id="user_header" onclick="menu_perfil()" class='bx bxs-user-circle'></i>
+            </a></li>
+
+    </ul>
+</header>
+<!-- header -->
+
+<!-- div perfil -->
+<div class="box_perfil_menu">
+    <div class="perfil_menu" id="div_perfil_menu">
+        <ul>
+            <!-- <li class="li_perfil_icone"><a class="a_icone_perfil" href="#">Meu perfil</a></li><br> -->
+            <li class="li_perfil_icone"><a class="a_icone_perfil" href="./index.html">Sair <i
+                        class='bx bx-log-out'></i></a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<!-- div perfil -->
+
+<!-- box avalie ponto turistico -->
+<div class="entrar_fundo">
+
+    <div class="cadastrar_container" id="div_avaliar_container">
+
+
+
+        <div class="entrar_corpo">
+
+            <div class="entrar_corpo_fundo">
+                <div class="entrar_corpo_header">
+                    <div class="entrar_header">
+                        <div id="div_sair_container" class="sair_container" onclick="sair()">X</div>
+                    </div>
+                </div>
+
+                <div class="entrar_corpo_conteudo">
+
+                    <div class="txt1_corpo">
+                        <form id="form_postagem" method="post" onsubmit="return publicar()">
+                            AVALIE OS PONTOS TURÍSTICOS <br>
+                            DE ACORDO COM SUAS VIVÊNCIAS E EXPERIÊNCIAS <br>
+                    </div>
+
+                    <div class="txt1_corpo">Selecione um ponto turístico:</div>
+
+                    <div class="select_option">
+                        <select id="turisticos">
+                            <option value="1">Ponte Engenheiro Nelson de Godoy Pereira
+                            <option value="2">Igreja Matriz
+                            <option value="3">Tirolesa das Corredeiras
+                            <option value="4">Iate Clube Piraju
+                            <option value="5">Prainha
+                                <!-- <option value="6">Parque do Rio Paranapanema -->
+                            </option>
+                        </select>
+                    </div>
+
+                    <div class="txt1_corpo">Sobre o Ponto Turístico:</div>
+                    <div class="select_option">
+                        <select id="descricao">
+                            <option value="Ruim">Ruim
+                            <option value="Ok">Ok
+                            <option value="Bom">Bom
+                            <option value="Muito Bom">Muito bom
+                            <option value="Superou as Expectatívas">Superou as Expectativas
+
+                            </option>
+                        </select>
+                    </div>
+                    <!-- <div class="box_email"><textarea maxlength="250" rows="5"
+                            placeholder="Insira aqui seu comentário(até 250 caracteres)" class="input_decoracao3"
+                            id="descricao" type="text"></textarea></div> -->
+
+                    <div class="txt1_corpo">De uma nota para a sua experiência de 1 a 5 estrelas</div>
+                    <div class="txt1_corpo">
+                        <div id="starRating" class="rating">
+                            <span class="star" onclick="rate(1)"><i id="id_estrelas1" class='bx bxs-star'
+                                    value="1"></i></span>
+                            <span class="star" onclick="rate(2)"><i id="id_estrelas2" class='bx bxs-star'
+                                    value="2"></i></span>
+                            <span class="star" onclick="rate(3)"><i id="id_estrelas3" class='bx bxs-star'
+                                    value="3"></i></span>
+                            <span class="star" onclick="rate(4)"><i id="id_estrelas4" class='bx bxs-star'
+                                    value="4"></i></span>
+                            <span class="star" onclick="rate(5)"><i id="id_estrelas5" class='bx bxs-star'
+                                    value="5"></i></span>
+                        </div>
+                    </div>
+                    <p id="ratingPercentage" class="txt1_corpo">Nota: 0</p>
+                </div>
+                <div class="box_botao"><button class="botao_avaliar" onclick="">Enviar avaliação</button>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- box avalie ponto turistico -->
+
+<!-- corpo inicio -->
+
+<body class="body">
+
+
+    <div class="container_corpo">
+        <div class="box_titulo">
+            <div class="corpo_titulo1">Olá <B><span id="b_usuario"></B></span>,
+                conheça os pontos turísticos e explore a beleza da nossa cidade !</div>
+        </div>
+    </div>
+
+
+    <div class="corpo1">
+        <div class="container_corpo">
+            <div class="box_titulo">
+                <div class="corpo_titulo1"> Ponte Engenheiro Nelson de Godoy Pereira</div>
+            </div>
+            <div class="corpo_txt">
+                <div class="txt_pt">
+                    Uma ponte suspensa que atravessa o Rio Paranapanema, proporcionando vistas panorâmicas e uma
+                    experiência
+                    única.
+                    <div class="card_dados">
+                        <div class="nota" id="nota_um">
+                            Nota:<span id="media_um"></span>
+                        </div>
+                        <b><span id="pessoas_um"></span></b> pessoas avaliaram esse local
+                        <div class="estrela"><button onclick="avaliar()" class="avaliar">Avaliar</button>
+                            <p class="ver_ava"><i class='bx bxs-bar-chart-alt-2'></i> <a href="ver_avaliacoes.html">Ver
+                                    avaliações</a></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="corpo_img">
+                    <div class="slides">
+                        <input type="radio" name="slide" id="slide1" checked>
+                        <input type="radio" name="slide" id="slide2">
+                        <input type="radio" name="slide" id="slide3">
+                        <input type="radio" name="slide" id="slide4">
+                        <input type="radio" name="slide" id="slide5">
+
+
+                        <div class="slide s1">
+                            <img src="assets/imgs/ponte1.jpg">
+                        </div>
+                        <div class="slide s2">
+                            <img src="assets/imgs/ponte2.jpg">
+                        </div>
+                        <div class="slide s3">
+                            <img src="assets/imgs/ponte3.jpg">
+                        </div>
+                        <div class="slide s4">
+                            <img src="assets/imgs/Ponte 4.jpg">
+                        </div>
+                        <div class="slide s5">
+                            <img src="assets/imgs/2e792ed8b5fedafaae2ac1f1515b3f9b.jpg">
+                        </div>
+
+                        <div class="navigation">
+                            <label class="bar" for="slide1"></label>
+                            <label class="bar" for="slide2"></label>
+                            <label class="bar" for="slide3"></label>
+                            <label class="bar" for="slide4"></label>
+                            <label class="bar" for="slide5"></label>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="corpo1">
+        <div class="container_corpo">
+            <div class="box_titulo">
+                <div class="corpo_titulo1"> Igreja Matriz</div>
+            </div>
+            <div class="corpo_txt">
+                <div class="txt_pt">
+                    Uma igreja histórica que representa a arquitetura religiosa da região. <br>
+                    Detalhes arquitetônicos, obras de arte sacra e a atmosfera espiritual fazem dela um local de
+                    interesse cultural.
+                    <div class="card_dados">
+                        <div class="nota" id="nota_dois">
+                            Nota:<span id="media_dois"></span>
+                        </div>
+                        <b><span id="pessoas_dois"></span></b> pessoas avaliaram esse local
+                        <div class="estrela"><button onclick="avaliar()" class="avaliar">Avaliar</button>
+                            <p class="ver_ava"><i class='bx bxs-bar-chart-alt-2'></i> <a href="ver_avaliacoes.html">Ver
+                                    avaliações</a></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="corpo_img">
+
+                    <div class="slides">
+                        <input type="radio" name="slide" id="slide6" checked>
+                        <input type="radio" name="slide" id="slide7">
+                        <input type="radio" name="slide" id="slide8">
+                        <input type="radio" name="slide" id="slide9">
+                        <input type="radio" name="slide" id="slide10">
+
+
+                        <div class="slide s1">
+                            <img src="assets/imgs/igreja1.jpg">
+                        </div>
+                        <div class="slide s2">
+                            <img src="assets/imgs/igreja2.webp">
+                        </div>
+                        <div class="slide s3">
+                            <img src="assets/imgs/igreja3.jpg">
+                        </div>
+                        <div class="slide s4">
+                            <img src="assets/imgs/igreja6.jpg">
+                        </div>
+                        <div class="slide s5">
+                            <img src="assets/imgs/igreja8.jpg">
+                        </div>
+
+                        <div class="navigation">
+                            <label class="bar" for="slide6"></label>
+                            <label class="bar" for="slide7"></label>
+                            <label class="bar" for="slide8"></label>
+                            <label class="bar" for="slide9"></label>
+                            <label class="bar" for="slide10"></label>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="corpo1">
+        <div class="container_corpo">
+            <div class="box_titulo">
+                <div class="corpo_titulo1"> Tirolesa das Corredeiras</div>
+            </div>
+            <div class="corpo_txt">
+                <div class="txt_pt">
+                    Esta incrível aventura oferece uma vista panorâmica das famosas corredeiras do Rio Paranepanema.
+                    <br>
+                    Os cabos da Tirolesa percorrem um total de aproximadamente 500m, com altura de oitenta e um metros
+                    acima do rio .
+                    <div class="card_dados">
+                        <div class="nota" id="nota_tres">
+                            Nota:
+                            <span id="media_tres"></span>
+                        </div>
+                        <b><span id="pessoas_tres"></span></b> pessoas avaliaram esse local
+                        <div class="estrela"><button onclick="avaliar()" class="avaliar">Avaliar</button>
+                            <p class="ver_ava"><i class='bx bxs-bar-chart-alt-2'></i> <a href="ver_avaliacoes.html">Ver
+                                    avaliações</a></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="corpo_img">
+
+                    <div class="slides">
+                        <input type="radio" name="slide" id="slide11" checked>
+                        <input type="radio" name="slide" id="slide12">
+                        <input type="radio" name="slide" id="slide13">
+                        <input type="radio" name="slide" id="slide14">
+                        <input type="radio" name="slide" id="slide15">
+
+
+                        <div class="slide s1">
+                            <img src="assets/imgs/tirolesa1.jpg">
+                        </div>
+                        <div class="slide s2">
+                            <img src="assets/imgs/tirolesa2.jpg">
+                        </div>
+                        <div class="slide s3">
+                            <img src="assets/imgs/tirolesa9.png">
+                        </div>
+                        <div class="slide s4">
+                            <img src="assets/imgs/tirolesa7.jpg">
+                        </div>
+                        <div class="slide s5">
+                            <img src="assets/imgs/tirolesa8.jpg">
+                        </div>
+
+                        <div class="navigation">
+                            <label class="bar" for="slide11"></label>
+                            <label class="bar" for="slide12"></label>
+                            <label class="bar" for="slide13"></label>
+                            <label class="bar" for="slide14"></label>
+                            <label class="bar" for="slide15"></label>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="corpo1">
+        <div class="container_corpo">
+            <div class="box_titulo">
+                <div class="corpo_titulo1"> Iate Clube Piraju </div>
+            </div>
+            <div class="corpo_txt">
+                <div class="txt_pt">
+                    Um clube a beira do rio onde reune a natureza e a diversão em um unico lugar.
+          Possui quadras, academia, piscinas e área de churrasco, o lugar perfeito para reunir a família e os amigos.
+                    <div class="card_dados">
+                        <div class="nota" id="nota_quatro">
+                            Nota:<span id="media_quatro"></span>
+                        </div>
+                        <b><span id="pessoas_quatro"></span></b> pessoas avaliaram esse local
+                        <div class="estrela"><button onclick="avaliar()" class="avaliar">Avaliar</button>
+                            <p class="ver_ava"><i class='bx bxs-bar-chart-alt-2'></i> <a href="ver_avaliacoes.html">Ver
+                                    avaliações</a></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="corpo_img">
+
+                    <div class="slides">
+                        <input type="radio" name="slide" id="slide21" checked>
+                        <input type="radio" name="slide" id="slide22">
+                        <input type="radio" name="slide" id="slide23">
+                        <input type="radio" name="slide" id="slide24">
+                        <input type="radio" name="slide" id="slide25">
+
+
+                        <div class="slide s1">
+                            <img src="assets/imgs/iate1.jpg">
+                        </div>
+                        <div class="slide s2">
+                            <img src="assets/imgs/iate2.jpg">
+                        </div>
+                        <div class="slide s3">
+                            <img src="assets/imgs/iate3.jpg">
+                        </div>
+                        <div class="slide s4">
+                            <img src="assets/imgs/iate4.jpg">
+                        </div>
+                        <div class="slide s5">
+                            <img src="assets/imgs/iate5.jpg">
+                        </div>
+
+                        <div class="navigation">
+                            <label class="bar" for="slide21"></label>
+                            <label class="bar" for="slide22"></label>
+                            <label class="bar" for="slide23"></label>
+                            <label class="bar" for="slide24"></label>
+                            <label class="bar" for="slide25"></label>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="corpo1">
+        <div class="container_corpo">
+            <div class="box_titulo">
+                <div class="corpo_titulo1"> Prainha </div>
+            </div>
+            <div class="corpo_txt">
+                <div class="txt_pt">
+                    Localizada as margens do Rio Paranapanema, a 16 km da cidade de Piraju, uma parte alagada do rio,
+                    por conta da usina elétrica , sendo muito frequentada no verão pela população local e regional,
+                    chega a ter mais de cinco mil visitantes aos finais de semana e feriados.
+                    <div class="card_dados">
+                        <div class="nota" id="nota_cinco">
+                            Nota:<span id="media_cinco"></span>
+                        </div>
+                        <b><span id="pessoas_cinco"></span></b> pessoas avaliaram esse local
+                        <div class="estrela"><button onclick="avaliar()" class="avaliar">Avaliar</button>
+                            <p class="ver_ava"><i class='bx bxs-bar-chart-alt-2'></i> <a href="ver_avaliacoes.html">Ver
+                                    avaliações</a></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="corpo_img">
+
+                    <div class="slides">
+                        <input type="radio" name="slide" id="slide16" checked>
+                        <input type="radio" name="slide" id="slide17">
+                        <input type="radio" name="slide" id="slide18">
+                        <input type="radio" name="slide" id="slide19">
+                        <input type="radio" name="slide" id="slide20">
+
+
+                        <div class="slide s1">
+                            <img src="assets/imgs/praia1.jpg">
+                        </div>
+                        <div class="slide s2">
+                            <img src="assets/imgs/praia2.jpg">
+                        </div>
+                        <div class="slide s3">
+                            <img src="assets/imgs/praia3.jpg">
+                        </div>
+                        <div class="slide s4">
+                            <img src="assets/imgs/praia3.webp">
+                        </div>
+                        <div class="slide s5">
+                            <img src="assets/imgs/praia4.jpg">
+                        </div>
+
+                        <div class="navigation">
+                            <label class="bar" for="slide16"></label>
+                            <label class="bar" for="slide17"></label>
+                            <label class="bar" for="slide18"></label>
+                            <label class="bar" for="slide19"></label>
+                            <label class="bar" for="slide20"></label>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <br>
+    <hr><br>
+    <!-- mapa -->
+    <div class="corpo1">
+        <div class="box-mapa2">
+            <div id="map"></div>
+        </div>
+    </div>
+    <!-- mapa -->
+
+</body>
+<!-- corpo fim -->
+
+<!--footer inicio-->
+<div class="rodape">
+
+    <div class="navegacao_img">
+        <p> <img src="./assets/pirajulogo.PNG" width="130px"></p>
+    </div>
+
+    <div class="navegacao">
+        <p class="titulo_navegacao">Navegação</p>
+        <a class="a_navegacao" href="Home_logado.html">SOBRE PIRAJU</a><br>
+        <a class="a_navegacao" href="PT_logado.html">PONTOS TURÍSTICOS</a><br>
+        <a class="a_navegacao" href="ver_avaliacoes.html">ESTATÍSTICAS</a><br>
+        <!-- <a class="a_navegacao" href="#">EXPERIÊNCIAS</a><br> -->
+        <!-- <a class="a_navegacao" href="#">ENTRAR</a><br> -->
+        <!-- <a class="a_navegacao" href="#">CADASTRE-SE</a><br> -->
+        <a class="a_navegacao" href="index.html">SAIR</a><br>
+    </div>
+
+
+    <div class="navegacao">
+        <p class="titulo_navegacao">Todos os direitos reservados</p>
+        <p>PiraTour,2023</p>
+    </div>
+
+    <div class="redes_sociais">
+
+        <ul class="ul_rodape">
+            <li class="li_rodape"> <a href="https://outlook.office.com/mail/"
+                    target="https://outlook.office.com/mail/"><i class='bx bx-envelope'></i></a>
+            <li class="li_rodape"><a href="https://www.instagram.com/gustavo__bueno__/"
+                    target="https://www.instagram.com/gustavo__bueno__/"><i class='bx bxl-instagram'
+                        id="instagram"></i></a>
+            <li class="li_rodape"><a href="https://github.com/buenofonsecag/prejetooo"
+                    target="https://github.com/buenofonsecag/prejetooo"><i class='bx bxl-github'></i></a>
+            <li class="li_rodape"><a href=" https://wa.me/5511933923464" target=" https://wa.me/5511933923464"><i
+                        class='bx bxl-whatsapp'></i></a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<!--footer fim-->
+</div>
+
+<!--footer fim-->
+
+<script>
+
+    window.onload = mediaPontoUm(), mediaPontoDois(), mediaPontoTres(), mediaPontoQuatro(), mediaPontoCinco();
+    window.onload = pessoasUm(), pessoasDois(), pessoasTres(), pessoasQuatro(),pessoasCinco();
+
+    var selectedStars = 0;
+    // estrelas na avaliacao
+    function rate(stars) {
+        for (i = 1; i <= 5; i++) {
+            estrelaAtual = document.getElementById(`id_estrelas${i}`);
+            if (i <= stars) {
+                estrelaAtual.classList.add("estrela_preenchida");
+            } else {
+                estrelaAtual.classList.remove("estrela_preenchida");
+            }
+        }
+        selectedStars = stars;
+        updateRating();
+    }
+
+    function updateRating() {
+        const ratingPercentage = Number(selectedStars);
+        document.getElementById('ratingPercentage').innerText = `Nota: ${ratingPercentage.toFixed(1)} `;
+    }
+    // estrelas na avaliacao
+
+
+    // <!-- fazer avaliação script -->
+    b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+    var nomeUsuario =sessionStorage.NOME_USUARIO;
+    function limparFormulario() {
+        document.getElementById("form_postagem").reset();
+    }
+
+    function mediaPontoUm() {
+        fetch(`/avisos/listar/1`, {
+            method: "post",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify()
+        }).then(function (resposta) {
+
+            console.log("resposta: ", resposta);
+
+            if (resposta.ok) {
+                // console.log("Foi a media do ponto 1", resposta);
+                resposta.json().then((json) => {
+                    console.log("AQUI ESTA A MEDIA", json);
+                    var media = (json[0].media);
+                    var media10 = media * 2;
+                    media_um.innerHTML = `${media10.toFixed(1)}`
+
+                    if (media10 <= 5) {
+                        nota_um.style.backgroundColor = 'red'
+                    } else if (media10 < 8) {
+                        nota_um.style.backgroundColor = 'yellow'
+                    } else {
+                        nota_um.style.backgroundColor = 'green'
+                    }
+
+                });
+
+
+            } else {
+                throw ("Houve um erro ao tentar realizar a postagem! Código da resposta: " + resposta.status);
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+            // finalizarAguardar();
+        });
+    }
+    function mediaPontoDois() {
+        fetch(`/avisos/listar/2`, {
+            method: "post",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify()
+        }).then(function (resposta) {
+
+            console.log("resposta: ", resposta);
+
+            if (resposta.ok) {
+                // console.log("Foi a media do ponto 1", resposta);
+                resposta.json().then((json) => {
+                    console.log("AQUI ESTA A MEDIA", json);
+                    var media = (json[0].media);
+                    var media10 = media * 2;
+                    media_dois.innerHTML = `${media10.toFixed(1)}`
+
+                    if (media10 <= 5) {
+                        nota_dois.style.backgroundColor = 'red'
+                    } else if (media10 < 8) {
+                        nota_dois.style.backgroundColor = 'yellow'
+                    } else {
+                        nota_dois.style.backgroundColor = 'green'
+                    }
+
+                });
+
+
+            } else {
+                throw ("Houve um erro ao tentar realizar a postagem! Código da resposta: " + resposta.status);
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+        });
+    }
+    function mediaPontoTres() {
+        fetch(`/avisos/listar/3`, {
+            method: "post",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify()
+        }).then(function (resposta) {
+
+            console.log("resposta: ", resposta);
+
+            if (resposta.ok) {
+                // console.log("Foi a media do ponto 1", resposta);
+                resposta.json().then((json) => {
+                    console.log("AQUI ESTA A MEDIA", json);
+                    var media = (json[0].media);
+                    var media10 = media * 2;
+                    media_tres.innerHTML = `${media10.toFixed(1)}`
+
+                    if (media10 <= 5) {
+                        nota_tres.style.backgroundColor = 'red'
+                    } else if (media10 < 8) {
+                        nota_tres.style.backgroundColor = 'yellow'
+                    } else {
+                        nota_tres.style.backgroundColor = 'green'
+                    }
+                });
+
+
+            } else {
+                throw ("Houve um erro ao tentar realizar a postagem! Código da resposta: " + resposta.status);
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+            // finalizarAguardar();
+        });
+    }
+    function mediaPontoQuatro() {
+
+        fetch(`/avisos/listar/4`, {
+            method: "post",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify()
+        }).then(function (resposta) {
+
+            console.log("resposta: ", resposta);
+
+            if (resposta.ok) {
+                resposta.json().then((json) => {
+                    console.log("AQUI ESTA A MEDIA", json);
+                    var media = (json[0].media);
+                    var media10 = media * 2;
+                    media_quatro.innerHTML = `${media10.toFixed(1)}`
+
+                    if (media10 <= 5) {
+                        nota_quatro.style.backgroundColor = 'red'
+                    } else if (media10 < 8) {
+                        nota_quatro.style.backgroundColor = 'yellow'
+                    } else {
+                        nota_quatro.style.backgroundColor = 'green'
+                    }
+                });
+
+
+            } else {
+                throw ("Houve um erro ao tentar realizar a postagem! Código da resposta: " + resposta.status);
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+        });
+    }
+    function mediaPontoCinco() {
+
+        fetch(`/avisos/listar/5`, {
+            method: "post",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify()
+        }).then(function (resposta) {
+
+            console.log("resposta: ", resposta);
+
+            if (resposta.ok) {
+                resposta.json().then((json) => {
+                    console.log("AQUI ESTA A MEDIA", json);
+                    var media = (json[0].media);
+                    var media10 = media * 2;
+                    media_cinco.innerHTML = `${media10.toFixed(1)}`
+
+                    if (media10 <= 5) {
+                        nota_cinco.style.backgroundColor = 'red'
+                    } else if (media10 < 8) {
+                        nota_cinco.style.backgroundColor = 'yellow'
+                    } else {
+                        nota_cinco.style.backgroundColor = 'green'
+                    }
+                });
+
+
+            } else {
+                throw ("Houve um erro ao tentar realizar a postagem! Código da resposta: " + resposta.status);
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+        });
+    }
+
+    function publicar() {
+        var idUsuario = sessionStorage.ID_USUARIO;
+if(selectedStars == 0){
+alert("Insira pelo menos uma estrela !")
+return false;
+}else{
+
+}
+        var corpo = {
+            titulo: form_postagem.turisticos.value,
+            descricao: form_postagem.descricao.value,
+            nota: selectedStars
+        }
+
+        fetch(`/avisos/publicar/${idUsuario}`, {
+            method: "post",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(corpo)
+        }).then(function (resposta) {
+
+            console.log("resposta: ", resposta);
+
+            if (resposta.ok) {
+                window.alert(`Obrigado ${nomeUsuario}, sua avaliação foi realizada com sucesso . `);
+                window.location = "/PT_logado.html";
+                limparFormulario();
+                // finalizarAguardar();
+            } else if (resposta.status == 404) {
+                window.alert("Deu 404!");
+                // alert("Deu 404!")
+            } else {
+                throw ("Houve um erro ao tentar realizar a postagem! Código da resposta: " + resposta.status);
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+            // finalizarAguardar();
+        });
+
+        return false;
+
+    }
+    // contar quantas pessoas avaliaram
+    function pessoasUm() {
+        fetch(`/avisos/listarPessoas/1`, {
+            method: "post",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify()
+        }).then(function (resposta) {
+
+            console.log("resposta: ", resposta);
+
+            if (resposta.ok) {
+                resposta.json().then((json) => {
+                    console.log("AQUI ESTA A QUANTIDADE DE PESSOAS fk1", json);
+                    var pessoas = (json[0].pessoas);
+                    pessoas_um.innerHTML = `${pessoas}`
+                    console.log(`${pessoas}`, json);
+                });
+
+
+            } else {
+                throw ("Houve um erro ao tentar realizar a postagem! Código da resposta: " + resposta.status);
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+        });
+    }
+    function pessoasDois() {
+        fetch(`/avisos/listarPessoas/2`, {
+            method: "post",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify()
+        }).then(function (resposta) {
+
+            console.log("resposta: ", resposta);
+
+            if (resposta.ok) {
+                resposta.json().then((json) => {
+                    console.log("AQUI ESTA A QUANTIDADE DE PESSOAS fk1", json);
+                    var pessoas = (json[0].pessoas);
+                    pessoas_dois.innerHTML = `${pessoas}`
+                    console.log(`${pessoas}`, json);
+                });
+
+
+            } else {
+                throw ("Houve um erro ao tentar realizar a postagem! Código da resposta: " + resposta.status);
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+        });
+    }
+    function pessoasTres() {
+        fetch(`/avisos/listarPessoas/3`, {
+            method: "post",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify()
+        }).then(function (resposta) {
+
+            console.log("resposta: ", resposta);
+
+            if (resposta.ok) {
+                resposta.json().then((json) => {
+                    console.log("AQUI ESTA A QUANTIDADE DE PESSOAS fk1", json);
+                    var pessoas = (json[0].pessoas);
+                    pessoas_tres.innerHTML = `${pessoas}`
+                    console.log(`${pessoas}`, json);
+                });
+
+
+            } else {
+                throw ("Houve um erro ao tentar realizar a postagem! Código da resposta: " + resposta.status);
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+        });
+    }
+    function pessoasQuatro() {
+        fetch(`/avisos/listarPessoas/4`, {
+            method: "post",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify()
+        }).then(function (resposta) {
+
+            console.log("resposta: ", resposta);
+
+            if (resposta.ok) {
+                resposta.json().then((json) => {
+                    console.log("AQUI ESTA A QUANTIDADE DE PESSOAS fk1", json);
+                    var pessoas = (json[0].pessoas);
+                    pessoas_quatro.innerHTML = `${pessoas}`
+                    console.log(`${pessoas}`, json);
+                });
+
+
+            } else {
+                throw ("Houve um erro ao tentar realizar a postagem! Código da resposta: " + resposta.status);
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+        });
+    }
+    function pessoasCinco() {
+        fetch(`/avisos/listarPessoas/5`, {
+            method: "post",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify()
+        }).then(function (resposta) {
+
+            console.log("resposta: ", resposta);
+
+            if (resposta.ok) {
+                resposta.json().then((json) => {
+                    console.log("AQUI ESTA A QUANTIDADE DE PESSOAS fk1", json);
+                    var pessoas = (json[0].pessoas);
+                    pessoas_cinco.innerHTML = `${pessoas}`
+                    console.log(`${pessoas}`, json);
+                });
+
+
+            } else {
+                throw ("Houve um erro ao tentar realizar a postagem! Código da resposta: " + resposta.status);
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+        });
+    }
+    // contar quantas pessoas avaliaram
+
+</script>
+<!-- mapa -->
+<script>
+    var map = L.map('map').setView([-23.1938, -49.3844], 15);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+        {
+            attribution: '© PiraTour'
+        }).addTo(map);
+    L.marker([-23.182872629006788, -49.38650903191002]).addTo(map)
+        .bindPopup('Tirolesa das Corredeiras')
+        .openPopup();
+
+    L.marker([-23.222508563994086, -49.24317799142994]).addTo(map)
+        .bindPopup('Prainha')
+        .openPopup();
+
+    L.marker([-23.188578, -49.384816]).addTo(map)
+        .bindPopup('Ponte Engenheiro Nelson de Godoy')
+        .openPopup();
+
+    L.marker([-23.189526224743314, -49.38318542130615]).addTo(map)
+        .bindPopup('Iate Clube Piraju')
+        .openPopup();
+
+
+
+    L.marker([-23.194497888020386, -49.38429869818963]).addTo(map)
+        .bindPopup('Igreja Matriz')
+        .openPopup();
+</script>
+<!-- mapa -->
